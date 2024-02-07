@@ -1,0 +1,325 @@
+{
+	"info": {
+		"_postman_id": "ad015692-98ef-488f-b1d3-87a20a9dc959",
+		"name": "g30-spring-restful",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25371022",
+		"_collection_link": "https://gold-resonance-505982.postman.co/workspace/PIMS~5cf69f69-28a0-4b78-b13d-fb9e96e04d80/collection/25371022-ad015692-98ef-488f-b1d3-87a20a9dc959?action=share&source=collection_link&creator=25371022"
+	},
+	"item": [
+		{
+			"name": "jpa",
+			"item": [
+				{
+					"name": "post-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/posts/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"posts",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "posts-by-user-id-native",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/posts/user/native/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"posts",
+								"user",
+								"native",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "posts-by-user-id-query",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/posts/user/query/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"posts",
+								"user",
+								"query",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "posts-sorted",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/posts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "posts-id-and-user-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/posts/4/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"posts",
+								"4",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "posts-by-title",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/posts/title?title=et",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"posts",
+								"title"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "et"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "posts-pageable",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/posts/pageable?page=11&size=9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"posts",
+								"pageable"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "11"
+								},
+								{
+									"key": "size",
+									"value": "9"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "posts-pageable-native",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/posts/pageable/native?page=11&size=9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"posts",
+								"pageable",
+								"native"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "11"
+								},
+								{
+									"key": "size",
+									"value": "9"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "posts-pageable-qeury",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/posts/pageable/query?page=11&size=9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"posts",
+								"pageable",
+								"query"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "11"
+								},
+								{
+									"key": "size",
+									"value": "9"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "post-by-id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/posts/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"posts",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post-list",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/xml",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post-save",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/xml",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    // \"title\": \"Effective Java\",\r\n    // \"content\": \"Most useful features of Java programming language...\",\r\n    \"author\" : \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

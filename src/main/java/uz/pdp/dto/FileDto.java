@@ -15,5 +15,5 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileDto {
     private String name;
     private String author;
-    private MultipartFile file;
+    private MultipartFile[] file;
 }
