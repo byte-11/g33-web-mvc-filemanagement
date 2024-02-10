@@ -53,7 +53,7 @@ public class UserDaoImpl implements UserDao {
         return user;
     }
 
-    public User saveBySimpleInsert(User user){
+    public User saveBySimpleInsert(User user) {
         KeyHolder keyHolder = simpleJdbcInsert.withTableName("users")
                 .usingGeneratedKeyColumns("id", "created_time")
 //                .usingColumns("username", "email", "password", "gender")
@@ -64,6 +64,15 @@ public class UserDaoImpl implements UserDao {
         user.setId((Long) keys.get("id"));
         user.setUsername(((Date) keys.get("created_time")).toString());
         return user;
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        return namedJdbcTemplate.queryForObject(
+                "SELECT * FROM users where email=:email",
+                Map.of("email", email),
+                User.class
+        );
     }
 
     public User saveByNamedParameter(User user) {
@@ -89,7 +98,7 @@ public class UserDaoImpl implements UserDao {
         return user;
     }
 
-    public User getByIdNamedParameter(Long id){
+    public User getByIdNamedParameter(Long id) {
         User user = namedJdbcTemplate.queryForObject(
                 "SELECT * FROM users WHERE id = :id",
                 Map.of("id", id),

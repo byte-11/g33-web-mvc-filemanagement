@@ -1,9 +1,27 @@
 package uz.pdp.dto;
 
-public record UserSignupDto(
-        String username,
-        String email,
-        String password,
-        String gender
-) {
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class UserSignupDto {
+    @NotBlank
+    @Length(min = 3)
+    private String username;
+    @Email
+    private String email;
+    @NotBlank
+    @Length(min = 6)
+    private String password;
+    @NotEmpty(message = "gender cannot be empty")
+    private String gender;
 }
