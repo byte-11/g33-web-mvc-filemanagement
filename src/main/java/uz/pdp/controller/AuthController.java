@@ -20,6 +20,11 @@ import uz.pdp.dto.UserLoginDto;
 import uz.pdp.dto.UserSignupDto;
 import uz.pdp.model.User;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 @Controller
 @RequestMapping("/auth")
 @RequiredArgsConstructor
@@ -28,18 +33,18 @@ public class AuthController {
     private final UserDao userDao;
 
     @GetMapping
-    public String auth() {
-        return "auth";
+    public String auth(Model model) {
+        model.addAttribute("dto", new UserSignupDto());
+        return "signup";
     }
 
     @PostMapping("/signup")
-    public ModelAndView login(
-            @ModelAttribute @Valid UserSignupDto signupDto,
-            BindingResult bindingResult, ModelAndView modelAndView
+    public String login(
+            @Valid @ModelAttribute("dto") UserSignupDto signupDto,
+            BindingResult bindingResult, Model model
     ) {
-        bindingResult.getFieldErrors().forEach(er -> System.out.println(er.getField() + " - " + er.getDefaultMessage()));
         if (bindingResult.hasErrors()){
-            bindingResult.getAllErrors().forEach(exObj -> System.out.println(exObj));
+            return "signup";
         }
 
         final var user = User.builder()
@@ -52,9 +57,8 @@ public class AuthController {
 //        userDao.save(user);
 //        userDao.saveByNamedParameter(user);
         userDao.saveBySimpleInsert(user);
-        modelAndView.addObject("user", user);
-        modelAndView.setViewName("index");
-        return modelAndView;
+        model.addAttribute("user", user);
+        return "index";
     }
 
     @PostMapping("/login")

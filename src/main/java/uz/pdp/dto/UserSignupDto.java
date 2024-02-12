@@ -15,12 +15,12 @@ import org.hibernate.validator.constraints.Length;
 @NoArgsConstructor
 public class UserSignupDto {
     @NotBlank
-    @Length(min = 3)
+    @Length(min = 3, max = 20)
     private String username;
     @Email
     private String email;
     @NotBlank
-    @Length(min = 6)
+    @Length(min = 6, max = 50)
     private String password;
     @NotEmpty(message = "gender cannot be empty")
     private String gender;

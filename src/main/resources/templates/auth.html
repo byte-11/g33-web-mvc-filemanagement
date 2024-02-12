@@ -11,24 +11,39 @@
 </head>
 <body>
 <div id="form-signup" class="hidden">
-    <form action="/auth/signup" method="post">
+    <div class="error" th:if="${errors}">
+        <ul th:each="err : ${errors}">
+            <li th:text="${err}"></li>
+        </ul>
+    </div>
+    <form action="/auth/signup" method="post" th:object="${dto}">
+        <div class="error" th:if="${#fields.hasErrors()}">
+            <ul th:each="err :${#fields.errors()}">
+                <li th:text="${err}"></li>
+            </ul>
+        </div>
+
         <label>
-            <span th:text="#{username}"/>: <input type="text" name="username">
+<!--            <span th:text="#{username}"/>: <input type="text" name="username">-->
+            <span th:text="#{username}"/>: <input type="text" name="username" th:field="*{username}">
         </label>
         <br>
         <br>
         <label>
-            <span th:text="#{email}"/> : <input type="text" name="email">
+<!--            <span th:text="#{email}"/> : <input type="text">-->
+            <span th:text="#{email}"/> : <input type="text" name="email" th:field="*{email}">
         </label>
         <br>
         <br>
         <label>
-            <span th:text="#{password}"/>: <input type="password" name="password">
+<!--            <span th:text="#{password}" />: <input type="password" name="password">-->
+            <span th:text="#{password}" />: <input type="password" name="password" th:field="*{password}">
         </label>
         <br>
         <br>
         <label for="gender" th:text="#{gender}"></label>
-        <select name="gender" id="gender">
+        <select name="gender" id="gender" th:field="*{gender}">
+<!--        <select name="gender" id="gender">-->
             <option value="male" th:text="#{gender.male}">Male</option>
             <option value="female" th:text="#{gender.female}">Female</option>
         </select>

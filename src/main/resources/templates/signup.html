@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sing up</title>
+    <style>
+        .error {
+            color: red;
+            font-size: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+
+<div id="form-signup" class="hidden">
+    <form action="/auth/signup" method="post" th:object="${dto}">
+        <!--<div class="error" th:if=${#fields.hasErrors() th:if="${#fields.hasErrors()}">
+            <ul th:each="err :${#fields.errors()}">
+                <li th:text="${err}"></li>
+            </ul>
+        </div>-->
+
+        <label>
+            <span th:text="#{username}"/>: <input type="text" name="username" th:field="*{username}">
+        </label>
+        <div class="error" th:if="${#fields.hasErrors('username')}">
+            <ul th:each="err : ${#fields.errors('username')}">
+                <li>
+                    <span th:text="${err}"/>
+                </li>
+            </ul>
+        </div>
+        <br>
+        <br>
+        <label>
+            <span th:text="#{email}"/> : <input type="text" name="email" th:field="*{email}">
+        </label>
+        <div class="error" th:if="${#fields.hasErrors('email')}">
+            <ul th:each="err : ${#fields.errors('email')}">
+                <li>
+                    <span th:text="${err}"/>
+                </li>
+            </ul>
+        </div>
+        <br>
+        <br>
+        <label>
+            <span th:text="#{password}"/>: <input type="password" name="password" th:field="*{password}">
+        </label>
+        <div class="error" th:if="${#fields.hasErrors('password')}">
+            <ul th:each="err : ${#fields.errors('password')}">
+                <li>
+                    <span th:text="${err}"/>
+                </li>
+            </ul>
+        </div>
+        <br>
+        <br>
+        <label for="gender" th:text="#{gender}"></label>
+        <select name="gender" id="gender" th:field="*{gender}">
+            <option value="male" th:text="#{gender.male}">Male</option>
+            <option value="female" th:text="#{gender.female}">Female</option>
+        </select>
+        <div class="error" th:if="${#fields.hasErrors('gender')}">
+            <ul th:each="err : ${#fields.errors('gender')}">
+                <li>
+                    <span th:text="${err}"/>
+                </li>
+            </ul>
+        </div>
+        <br>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
